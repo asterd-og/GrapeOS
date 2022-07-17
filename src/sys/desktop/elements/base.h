@@ -7,11 +7,11 @@
 #include <sys/drivers/video/base.h>
 #include <sys/gfx/bmp.h>
 
-
 typedef enum {
     Btn = 0,
     Txt,
-    Img
+    Img,
+    Drop
 } ElementType;
 
 class Element {

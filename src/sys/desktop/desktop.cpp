@@ -5,6 +5,7 @@
 #include <sys/desktop/elements/button.h>
 #include <sys/desktop/elements/image.h>
 #include <sys/desktop/elements/text.h>
+#include <sys/desktop/elements/dropDown.h>
 #include <sys/lib/string.h>
 #include <sys/hw/rtc.h>
 #include <sys/desktop/wm.h>
@@ -19,13 +20,21 @@ namespace Desktop {
 
     Window welcome;
 
+    DropDown dp1;
+
     void Idle(Window*w) {
+        if (Mouse::isLeftPressed() && Mouse::isWithin(w->x, w->y, w->width, w->height)) {
+            w->canvas.DrawChar(Mouse::getX() - w->x, Mouse::getY() - w->y, 'o', BLACK, kernel_font);
+        }
     }
 
     void init() {
         banner.load("./System/Textures/Welcome/Banner.bmp");
         welcome.create(150, 150, 180, 42+120, "Welcome", Idle, 1);
         img.create(0, 0, banner, welcome.canvas);
+
+        dp1.create(270, 270, 100, 10, BLACK, LIGHTGRAY, WHITE, FONT_SYSTEM_8x8, "Gawd", Vbe);
+        dp1.add("Hey");
 
         grape.load("./System/Textures/Assets/Grape.bmp");
         start.create(0, 0, strlen("Start")*font_get_width(kernel_font), 9, BLACK, GRAY, WHITE, kernel_font, "Start", Vbe);
@@ -50,6 +59,8 @@ namespace Desktop {
         Vbe.DrawFilledRectangle(10, 25+10, 150, 100, WHITE);
 
         Vbe.DrawFString(12, 25+10+5, BLACK, FONT_SYSTEM_8x8, "Used ram: %d MB\nFree ram: %d MB\nTotal ram: %d MB", Heap::mem_get_used_ram()/M, Heap::mem_get_free_ram()/M, Heap::mem_get_total_ram()/M);
+
+        dp1.update();
 
         welcome.update();
     }
