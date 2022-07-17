@@ -11,3 +11,4 @@ An operating system writen in c++
 ## Images
 ![LockScreen](https://user-images.githubusercontent.com/73673156/179368277-3c3c5422-b490-4876-9131-1aaaa72adf28.png)
 ![Desktop](https://user-images.githubusercontent.com/73673156/179368286-0f034489-6752-4004-96e6-ee5511c917f1.png)
+![PaintDP](https://user-images.githubusercontent.com/73673156/179394949-15b1ad4c-94c6-416f-8a29-b96675aa6a75.png)
